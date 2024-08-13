@@ -1,10 +1,10 @@
-FROM --platform=${BUILDPLATFORM} golang:1.21 as builder
-WORKDIR $GOPATH/src/github.com/transferwise/oomie
-COPY . $GOPATH/src/github.com/transferwise/oomie
+FROM --platform=${BUILDPLATFORM} golang:1.22 as builder
+WORKDIR $GOPATH/src/github.com/plotly/oomie
+COPY . $GOPATH/src/github.com/plotly/oomie
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 RUN GOOS=$TARGETOS GOARCH=$TARGETARCH make build
 
-FROM gcr.io/distroless/static-debian10
-COPY --from=builder /go/src/github.com/transferwise/oomie/bin/oomie /oomie
+FROM gcr.io/distroless/static-debian12
+COPY --from=builder /go/src/github.com/plotly/oomie/bin/oomie /oomie
 ENTRYPOINT ["/oomie"]
