@@ -1,4 +1,4 @@
-FROM --platform=${BUILDPLATFORM} golang:1.22 as builder
+FROM --platform=${BUILDPLATFORM} golang:1.22 AS builder
 WORKDIR $GOPATH/src/github.com/plotly/oomie
 COPY . $GOPATH/src/github.com/plotly/oomie
 ARG TARGETOS=linux
