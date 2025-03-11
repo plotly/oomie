@@ -1,6 +1,8 @@
 module github.com/plotly/oomie
 
-go 1.23
+go 1.23.0
+
+toolchain go1.23.7
 
 require (
 	github.com/google/cadvisor v0.50.0
